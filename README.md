@@ -47,10 +47,10 @@ You are free to add any cool features (other than the ones mentioned below) as l
 * All labels, variable names, and identifiers of any kind must be in English
 * Adding a description of your solution (in the PR or in the readme file) would help us to review your code faster
 * Don't use app development frameworks (like cordova or others), but feel free to use any third party libs that might save you time
+* Write necessary unit tests (You can use Kotlin or Java)
 
 
 ##### Bonus points
-- Unit tests (You can use Kotlin or Java)
 - UI tests (You can use Kotlin or Java)
 
 
