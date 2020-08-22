@@ -25,7 +25,7 @@ data class Recipe(
     val name: String,
     val products: List<String>,
     val proteins: String,
-    val rating: Int?,
+    val rating: Float?,
     val ratings: Int?,
     @SerializedName("thumb")
     val thumbnailUrl: String,
