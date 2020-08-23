@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Recipes">
+        <activity android:name=".ui.LoginActivity"></activity>
         <activity
             android:name=".ui.DetailsActivity"
             android:label="@string/title_activity_details"

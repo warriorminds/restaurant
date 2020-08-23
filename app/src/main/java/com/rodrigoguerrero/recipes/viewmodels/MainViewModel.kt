@@ -1,10 +1,12 @@
 package com.rodrigoguerrero.recipes.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rodrigoguerrero.recipes.models.RecipeApiState
 import com.rodrigoguerrero.recipes.repositories.RecipeRepository
+import com.rodrigoguerrero.recipes.session.SessionHandler
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,6 +16,7 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     var result: MutableLiveData<RecipeApiState> = MutableLiveData()
+    var loginButtonState: MutableLiveData<Boolean> = MutableLiveData()
 
     fun retrieveRecipes() {
         result.value = RecipeApiState.Loading
@@ -21,6 +24,13 @@ class MainViewModel @Inject constructor(
             recipesRepository.getRecipes().collect {
                 result.value = it
             }
+        }
+    }
+
+    fun setLoginButtonState(isLoggedIn: Boolean, context: Context) {
+        loginButtonState.value = isLoggedIn
+        if (!isLoggedIn) {
+            SessionHandler.logout(context)
         }
     }
 }

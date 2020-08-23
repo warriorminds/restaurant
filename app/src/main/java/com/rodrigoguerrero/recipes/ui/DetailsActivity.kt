@@ -2,9 +2,11 @@ package com.rodrigoguerrero.recipes.ui
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rodrigoguerrero.recipes.databinding.ActivityDetailsBinding
 import com.rodrigoguerrero.recipes.models.Recipe
+import com.rodrigoguerrero.recipes.session.SessionHandler
 import com.rodrigoguerrero.recipes.utils.getNutritionalInformation
 import com.squareup.picasso.Picasso
 
@@ -52,6 +54,12 @@ class DetailsActivity : AppCompatActivity() {
             binding.recipeDetails.nutritionCarbsValue.text = recipe.carbos.getNutritionalInformation()
             binding.recipeDetails.nutritionFatsValue.text = recipe.fats.getNutritionalInformation()
             binding.recipeDetails.nutritionProteinsValue.text = recipe.proteins.getNutritionalInformation()
+
+            if (SessionHandler.isSessionStarted(this@DetailsActivity)) {
+                binding.fab.visibility = View.VISIBLE
+            } else {
+                binding.fab.visibility = View.GONE
+            }
 
             title = ""
         }

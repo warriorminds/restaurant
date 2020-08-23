@@ -1,5 +1,7 @@
 package com.rodrigoguerrero.recipes.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -17,6 +19,10 @@ import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        val LOGIN_REQUEST_CODE = 1000
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -56,7 +62,23 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        viewModel.loginButtonState.observe(this, Observer {
+            if (it) {
+                binding.loginFab.text = getString(R.string.logout)
+            } else {
+                binding.loginFab.text = getString(R.string.login)
+            }
+        })
         viewModel.retrieveRecipes()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == LOGIN_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            viewModel.setLoginButtonState(true, this)
+        }
     }
 
     private fun init() {
@@ -69,6 +91,14 @@ class MainActivity : AppCompatActivity() {
             )
             layoutManager = gridlayoutManager
             adapter = recipesAdapter
+        }
+        binding.loginFab.setOnClickListener {
+            if (viewModel.loginButtonState.value == true) {
+                viewModel.setLoginButtonState(false, this)
+            } else {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivityForResult(intent, LOGIN_REQUEST_CODE)
+            }
         }
     }
 }

@@ -5,7 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.rodrigoguerrero.recipes.network.RecipesService
 import com.rodrigoguerrero.recipes.repositories.RecipeRepository
 import com.rodrigoguerrero.recipes.repositories.RecipeRepositoryImpl
+import com.rodrigoguerrero.recipes.session.Validator
+import com.rodrigoguerrero.recipes.session.ValidatorImpl
+import com.rodrigoguerrero.recipes.ui.LoginActivity
 import com.rodrigoguerrero.recipes.ui.MainActivity
+import com.rodrigoguerrero.recipes.viewmodels.LoginViewModel
 import com.rodrigoguerrero.recipes.viewmodels.MainViewModel
 import com.rodrigoguerrero.recipes.viewmodels.ViewModelFactory
 import com.rodrigoguerrero.recipes.viewmodels.ViewModelKey
@@ -46,14 +50,25 @@ abstract class RecipesModule {
     @ContributesAndroidInjector
     abstract fun mainActivity(): MainActivity
 
+    @ContributesAndroidInjector
+    abstract fun loginActivity(): LoginActivity
+
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(bindMainViewModel: MainViewModel): ViewModel
 
     @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
+
+    @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     abstract fun bindRecipeRepository(recipeRepositoryImpl: RecipeRepositoryImpl): RecipeRepository
+
+    @Binds
+    abstract fun bindValidator(validatorImpl: ValidatorImpl): Validator
 }

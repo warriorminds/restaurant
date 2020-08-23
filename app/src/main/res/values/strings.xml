@@ -17,4 +17,10 @@
     <string name="proteins">Proteins</string>
     <string name="loading_error">There was an error loading the recipes.</string>
     <string name="retry">Retry</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">logout</string>
+    <string name="invalid_email">Email is invalid.</string>
+    <string name="invalid_password">Password is invalid</string>
 </resources>
