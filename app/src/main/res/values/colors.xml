@@ -3,6 +3,7 @@
     <color name="colorPrimaryDark">#9FA8DA</color> <!--Color primary (dark)-->
     <color name="colorPrimaryLight">#3F51B5</color> <!--Color primary (light)-->
     <color name="colorPrimaryVariantDark">#3949AB</color> <!--Color primary variant (dark)-->
+    <color name="colorPrimaryVariantDarkTransparent">#553949AB</color> <!--Color primary variant (dark)-->
     <color name="colorPrimaryVariantLight">#303F9F</color> <!--Color primary variant (light)-->
 
     <color name="colorSecondary">#FFCC80</color> <!--Color secondary-->

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/details_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/details_padding"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_details">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/recipe_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Recipe name" />
+
+        <TextView
+            android:id="@+id/recipe_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="@id/recipe_name"
+            app:layout_constraintTop_toBottomOf="@id/recipe_name"
+            tools:text="Recipe headline" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_icon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginTop="@dimen/icon_margin"
+            app:layout_constraintLeft_toLeftOf="@id/recipe_headline"
+            app:layout_constraintTop_toBottomOf="@id/recipe_headline"
+            app:srcCompat="@drawable/ic_time" />
+
+        <TextView
+            android:id="@+id/recipe_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/icon_margin_left"
+            android:paddingBottom="@dimen/padding_details"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toRightOf="@id/image_icon"
+            app:layout_constraintTop_toBottomOf="@id/recipe_headline"
+            tools:text="Recipe Time" />
+
+        <TextView
+            android:id="@+id/recipe_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_details"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toLeftOf="@id/recipe_time"
+            app:layout_constraintTop_toBottomOf="@id/recipe_time"
+            tools:text="This is the recipe description" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_details"
+            android:text="@string/ingredients"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recipe_description" />
+
+        <TextView
+            android:id="@+id/recipe_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_details"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toLeftOf="@id/ingredients"
+            app:layout_constraintTop_toBottomOf="@id/ingredients"
+            tools:text="List of ingredients" />
+
+        <TextView
+            android:id="@+id/nutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_details"
+            android:text="@string/nutritional_values"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recipe_ingredients" />
+
+        <TextView
+            android:id="@+id/nutrition_calories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/calories"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/nutrition_calories_value"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition" />
+
+        <TextView
+            android:id="@+id/nutrition_calories_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toRightOf="@+id/nutrition_calories"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition"
+            tools:text="100 kcal" />
+
+        <TextView
+            android:id="@+id/nutrition_carbs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/carbs"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/nutrition_carbs_value"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_calories_value" />
+
+        <TextView
+            android:id="@+id/nutrition_carbs_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toRightOf="@+id/nutrition_carbs"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_calories_value"
+            tools:text="100 kcal" />
+
+        <TextView
+            android:id="@+id/nutrition_fats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/fats"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/nutrition_fats_value"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_carbs" />
+
+        <TextView
+            android:id="@+id/nutrition_fats_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toRightOf="@+id/nutrition_carbs"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_carbs_value"
+            tools:text="100 kcal" />
+
+        <TextView
+            android:id="@+id/nutrition_proteins"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/proteins"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/nutrition_proteins_value"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_fats" />
+
+        <TextView
+            android:id="@+id/nutrition_proteins_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintLeft_toRightOf="@+id/nutrition_proteins"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nutrition_fats_value"
+            tools:text="100 kcal" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

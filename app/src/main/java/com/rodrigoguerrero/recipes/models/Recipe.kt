@@ -1,7 +1,10 @@
 package com.rodrigoguerrero.recipes.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Recipe(
     val calories: String,
     val carbos: String,
@@ -35,4 +38,4 @@ data class Recipe(
     val undeliverableIngredients: List<String>,
     val user: User,
     val weeks: List<String>
-)
+) : Parcelable

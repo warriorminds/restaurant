@@ -1,10 +1,12 @@
 package com.rodrigoguerrero.recipes.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rodrigoguerrero.recipes.databinding.RecipeItemBinding
 import com.rodrigoguerrero.recipes.models.Recipe
+import com.rodrigoguerrero.recipes.ui.DetailsActivity
 import com.squareup.picasso.Picasso
 
 class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
@@ -18,6 +20,16 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
                 recipeName.text = recipe.name
                 recipeHeadline.text = recipe.headline
             }
+
+            itemView.setOnClickListener {
+                launchDetailsActivity(recipe)
+            }
+        }
+
+        private fun launchDetailsActivity(recipe: Recipe) {
+            val intent = Intent(itemView.context, DetailsActivity::class.java)
+            intent.putExtra(DetailsActivity.RECIPE_EXTRA, recipe)
+            itemView.context.startActivity(intent)
         }
     }
 

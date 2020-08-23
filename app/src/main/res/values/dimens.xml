@@ -4,4 +4,11 @@
     <dimen name="card_image_max_height">194dp</dimen>
     <dimen name="card_text_padding">12dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="details_padding">16dp</dimen>
+    <dimen name="padding_details">16dp</dimen>
+    <dimen name="icon_size">12dp</dimen>
+    <dimen name="icon_margin">2dp</dimen>
+    <dimen name="icon_margin_left">4dp</dimen>
 </resources>
