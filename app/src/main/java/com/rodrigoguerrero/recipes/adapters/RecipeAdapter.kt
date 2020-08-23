@@ -16,6 +16,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
             with (binding) {
                 Picasso.get().load(recipe.imageUrl).into(recipeImage)
                 recipeName.text = recipe.name
+                recipeHeadline.text = recipe.headline
             }
         }
     }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_image_max_height">194dp</dimen>
+    <dimen name="card_text_padding">12dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+</resources>

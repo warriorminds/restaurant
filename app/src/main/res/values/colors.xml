@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimaryDark">#9FA8DA</color> <!--Color primary (dark)-->
+    <color name="colorPrimaryLight">#3F51B5</color> <!--Color primary (light)-->
+    <color name="colorPrimaryVariantDark">#3949AB</color> <!--Color primary variant (dark)-->
+    <color name="colorPrimaryVariantLight">#303F9F</color> <!--Color primary variant (light)-->
+
+    <color name="colorSecondary">#FFCC80</color> <!--Color secondary-->
+    <color name="colorSecondaryVariant">#FF9800</color> <!--Color secondary variant-->
+
+    <color name="colorErrorDark">#ef9a9a</color> <!--Color error (dark)-->
+    <color name="colorErrorLight">#e53935</color> <!--Color error (light)-->
+
+    <color name="colorBackground">#f2f3f7</color>
+    <color name="colorSurface">#f2f3f7</color>
+    <color name="colorOnPrimary">#f2f3f7</color>
+    <color name="colorOnError">#f2f3f7</color>
+
+    <color name="colorSurfaceDark">#121212</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorBackgroundDark">#000000</color>
+    <color name="colorOnErrorDark">#000000</color>
 </resources>
