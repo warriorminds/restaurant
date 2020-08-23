@@ -15,4 +15,6 @@
     <string name="carbs">Carbs</string>
     <string name="fats">Fats</string>
     <string name="proteins">Proteins</string>
+    <string name="loading_error">There was an error loading the recipes.</string>
+    <string name="retry">Retry</string>
 </resources>
