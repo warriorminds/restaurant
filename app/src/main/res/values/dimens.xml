@@ -13,4 +13,5 @@
     <dimen name="icon_margin_left">4dp</dimen>
     <dimen name="login_padding">32dp</dimen>
     <dimen name="login_fields_margin">8dp</dimen>
+    <dimen name="fav_margin">16dp</dimen>
 </resources>

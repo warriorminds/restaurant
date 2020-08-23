@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private lateinit var binding: ActivityLoginBinding
-    private val recipesAdapter = RecipeAdapter()
 
     private val viewModel: LoginViewModel by viewModels {
         viewModelFactory

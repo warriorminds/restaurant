@@ -29,5 +29,10 @@ class SessionHandler {
             val username = sharedPreferences.getString(USER_PREFERENCE, "")
             return username?.isNotEmpty() ?: false
         }
+
+        fun getUsername(context: Context): String? {
+            val sharedPreferences = context.getSharedPreferences(LOGIN_PREFERENCES, Context.MODE_PRIVATE)
+            return sharedPreferences.getString(USER_PREFERENCE, "")
+        }
     }
 }

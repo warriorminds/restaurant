@@ -13,6 +13,7 @@ import com.rodrigoguerrero.recipes.R
 import com.rodrigoguerrero.recipes.adapters.RecipeAdapter
 import com.rodrigoguerrero.recipes.databinding.ActivityMainBinding
 import com.rodrigoguerrero.recipes.models.RecipeApiState
+import com.rodrigoguerrero.recipes.session.SessionHandler
 import com.rodrigoguerrero.recipes.viewmodels.MainViewModel
 import com.rodrigoguerrero.recipes.viewmodels.ViewModelFactory
 import dagger.android.AndroidInjection
@@ -92,6 +93,13 @@ class MainActivity : AppCompatActivity() {
             layoutManager = gridlayoutManager
             adapter = recipesAdapter
         }
+
+        if (SessionHandler.isSessionStarted(this)) {
+            viewModel.setLoginButtonState(true, this)
+        } else {
+            viewModel.setLoginButtonState(false, this)
+        }
+
         binding.loginFab.setOnClickListener {
             if (viewModel.loginButtonState.value == true) {
                 viewModel.setLoginButtonState(false, this)

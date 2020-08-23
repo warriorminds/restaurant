@@ -23,6 +23,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Recipe name" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/favorite_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fav_margin"
+            android:tint="@color/colorPrimaryLight"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/recipe_name"
+            app:layout_constraintLeft_toRightOf="@id/recipe_name"
+            app:layout_constraintTop_toTopOf="@id/recipe_name"
+            app:srcCompat="@drawable/ic_favorite" />
+
         <TextView
             android:id="@+id/recipe_headline"
             android:layout_width="wrap_content"

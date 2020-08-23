@@ -3,12 +3,18 @@ package com.rodrigoguerrero.recipes.ui
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.rodrigoguerrero.recipes.databinding.ActivityDetailsBinding
 import com.rodrigoguerrero.recipes.models.Recipe
 import com.rodrigoguerrero.recipes.session.SessionHandler
 import com.rodrigoguerrero.recipes.utils.getNutritionalInformation
+import com.rodrigoguerrero.recipes.viewmodels.DetailsViewModel
+import com.rodrigoguerrero.recipes.viewmodels.ViewModelFactory
 import com.squareup.picasso.Picasso
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -16,13 +22,27 @@ class DetailsActivity : AppCompatActivity() {
         val RECIPE_EXTRA = "recipe_extra"
     }
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val viewModel: DetailsViewModel by viewModels {
+        viewModelFactory
+    }
     private lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel.isFavorite.observe(this, Observer {
+            if (it) {
+                binding.recipeDetails.favoriteImage.visibility = View.VISIBLE
+            } else {
+                binding.recipeDetails.favoriteImage.visibility = View.GONE
+            }
+        })
         init()
     }
 
@@ -54,6 +74,13 @@ class DetailsActivity : AppCompatActivity() {
             binding.recipeDetails.nutritionCarbsValue.text = recipe.carbos.getNutritionalInformation()
             binding.recipeDetails.nutritionFatsValue.text = recipe.fats.getNutritionalInformation()
             binding.recipeDetails.nutritionProteinsValue.text = recipe.proteins.getNutritionalInformation()
+            binding.fab.setOnClickListener {
+                if (viewModel.isFavorite.value == true) {
+                    viewModel.removeFromFavorites(recipe.id, this@DetailsActivity)
+                } else {
+                    viewModel.addToFavorites(recipe.id, this@DetailsActivity)
+                }
+            }
 
             if (SessionHandler.isSessionStarted(this@DetailsActivity)) {
                 binding.fab.visibility = View.VISIBLE
@@ -61,6 +88,7 @@ class DetailsActivity : AppCompatActivity() {
                 binding.fab.visibility = View.GONE
             }
 
+            viewModel.isFavorite(recipe.id, this@DetailsActivity)
             title = ""
         }
     }
