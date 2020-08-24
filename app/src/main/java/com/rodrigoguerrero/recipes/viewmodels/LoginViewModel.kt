@@ -3,11 +3,11 @@ package com.rodrigoguerrero.recipes.viewmodels
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rodrigoguerrero.recipes.session.SessionHandler
+import com.rodrigoguerrero.recipes.session.Session
 import com.rodrigoguerrero.recipes.session.Validator
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(private val validator: Validator) : ViewModel() {
+class LoginViewModel @Inject constructor(private val validator: Validator, private val session: Session) : ViewModel() {
 
     var isPasswordValid: MutableLiveData<Boolean> = MutableLiveData()
     var isUsernameValid: MutableLiveData<Boolean> = MutableLiveData()
@@ -21,6 +21,6 @@ class LoginViewModel @Inject constructor(private val validator: Validator) : Vie
     }
 
     fun login(username: String, context: Context) {
-        SessionHandler.startSession(username, context)
+        session.startSession(username, context)
     }
 }

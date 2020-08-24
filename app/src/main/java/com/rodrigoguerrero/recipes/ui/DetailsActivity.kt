@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.rodrigoguerrero.recipes.databinding.ActivityDetailsBinding
 import com.rodrigoguerrero.recipes.models.Recipe
-import com.rodrigoguerrero.recipes.session.SessionHandler
+import com.rodrigoguerrero.recipes.session.Session
 import com.rodrigoguerrero.recipes.utils.getNutritionalInformation
 import com.rodrigoguerrero.recipes.viewmodels.DetailsViewModel
 import com.rodrigoguerrero.recipes.viewmodels.ViewModelFactory
@@ -24,6 +24,9 @@ class DetailsActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var sessionHandler: Session
 
     private val viewModel: DetailsViewModel by viewModels {
         viewModelFactory
@@ -82,7 +85,7 @@ class DetailsActivity : AppCompatActivity() {
                 }
             }
 
-            if (SessionHandler.isSessionStarted(this@DetailsActivity)) {
+            if (sessionHandler.isSessionStarted(this@DetailsActivity)) {
                 binding.fab.visibility = View.VISIBLE
             } else {
                 binding.fab.visibility = View.GONE

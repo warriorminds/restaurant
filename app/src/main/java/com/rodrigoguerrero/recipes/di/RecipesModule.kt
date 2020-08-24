@@ -7,6 +7,8 @@ import com.rodrigoguerrero.recipes.repositories.FavoritesRepository
 import com.rodrigoguerrero.recipes.repositories.FavoritesRepositoryImpl
 import com.rodrigoguerrero.recipes.repositories.RecipeRepository
 import com.rodrigoguerrero.recipes.repositories.RecipeRepositoryImpl
+import com.rodrigoguerrero.recipes.session.Session
+import com.rodrigoguerrero.recipes.session.SessionHandler
 import com.rodrigoguerrero.recipes.session.Validator
 import com.rodrigoguerrero.recipes.session.ValidatorImpl
 import com.rodrigoguerrero.recipes.ui.DetailsActivity
@@ -83,4 +85,7 @@ abstract class RecipesModule {
 
     @Binds
     abstract fun bindValidator(validatorImpl: ValidatorImpl): Validator
+
+    @Binds
+    abstract fun bindSessionHandler(sessionHandler: SessionHandler): Session
 }

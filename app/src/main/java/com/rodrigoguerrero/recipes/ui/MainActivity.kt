@@ -13,7 +13,7 @@ import com.rodrigoguerrero.recipes.R
 import com.rodrigoguerrero.recipes.adapters.RecipeAdapter
 import com.rodrigoguerrero.recipes.databinding.ActivityMainBinding
 import com.rodrigoguerrero.recipes.models.RecipeApiState
-import com.rodrigoguerrero.recipes.session.SessionHandler
+import com.rodrigoguerrero.recipes.session.Session
 import com.rodrigoguerrero.recipes.viewmodels.MainViewModel
 import com.rodrigoguerrero.recipes.viewmodels.ViewModelFactory
 import dagger.android.AndroidInjection
@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var session: Session
 
     private lateinit var binding: ActivityMainBinding
     private val recipesAdapter = RecipeAdapter()
@@ -49,7 +52,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 RecipeApiState.Error -> {
                     binding.progress.visibility = View.GONE
-                    Snackbar.make(binding.recipesRecyclerview, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
+                    Snackbar.make(
+                        binding.recipesRecyclerview,
+                        getString(R.string.loading_error),
+                        Snackbar.LENGTH_INDEFINITE
+                    )
                         .setAction(
                             R.string.retry
                         ) {
@@ -94,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             adapter = recipesAdapter
         }
 
-        if (SessionHandler.isSessionStarted(this)) {
+        if (session.isSessionStarted(this)) {
             viewModel.setLoginButtonState(true, this)
         } else {
             viewModel.setLoginButtonState(false, this)
